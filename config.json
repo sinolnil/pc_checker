@@ -1,0 +1,15 @@
+{
+  "production": {
+    "SCOPE": ["https://www.googleapis.com/auth/spreadsheets"]
+  },
+  "development": {
+    "SCOPE": ["https://www.googleapis.com/auth/spreadsheets"]
+  },
+  "testing": {
+    "SCOPE": ["https://www.googleapis.com/auth/spreadsheets"],
+    "spreadsheet_map": {
+      "orders": "10wD2SEl9A3LDOIvCAh_KuzmV7Ale1bLEQI6J4XVJ9ws",
+      "titles": "10wD2SEl9A3LDOIvCAh_KuzmV7Ale1bLEQI6J4XVJ9ws"
+    }
+  }
+}
