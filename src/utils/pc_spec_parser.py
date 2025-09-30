@@ -6,7 +6,7 @@ def find_match(pattern,string):
 class Patterns:
 
     # SYS Pattern
-    sys_pattern = r'(?:win|windows?)[ -]?\d{2}'
+    sys_pattern = r'(?:win|wind(?:ow)?s?)[ -]?\d{2}'
     one_letter_sys_pattern = r'W\d{2}'
 
     disk_pattern = r'\d{1,3}\s?(?:GB|TB)\s?(?:Solid State|M.2|NVME)?(?:\()?\s*(?:SSD|HDD|NVME|M.2)'
