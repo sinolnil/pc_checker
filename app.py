@@ -52,7 +52,8 @@ def main():
     pc = Pc()
 
     print(f"Fetched tiltes:{len(titles)}")
-    print(json.dumps(pc.system_info,indent=4))
+    #print(json.dumps(pc.system_info,indent=4))
+    print(json.dumps(pc.get_all_props,indent=4))
     print(f"runtime:{round(time.time() - start_time,2)} sec")
     input("Enter to close..")
 

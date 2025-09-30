@@ -10,6 +10,7 @@ class Pc:
     def __init__(self):
         self._os             = None
         self._cpu            = None
+        self._ram            = None
         self._storage        = None
         self._gpu            = None
         self._motherboard    = None
@@ -43,6 +44,13 @@ class Pc:
         if self._os == None:
             self._os = self._wmi_connection.Win32_OperatingSystem()[0].Caption
         return self._os
+
+    @property
+    def ram(self):
+        logger.debug("Accessing RAM")
+        if self._ram == None:
+            self._ram = [self._get_prop(ram) for ram in self._wmi_connection.Win32_PhysicalMemory()]
+        return self._ram
 
     @property
     def cpu(self):
@@ -90,7 +98,8 @@ class Pc:
             "cpu":self.cpu,
             "storage":self.storage,
             "motherboard":self.motherboard,
-            "gpu":self.gpu
+            "gpu":self.gpu,
+            "ram":self.ram
         }
     
     @property
@@ -100,5 +109,6 @@ class Pc:
             "cpu":[{"Name":cpu.get("Name"),"SerialNumber":cpu.get("SerialNumber"),"ProcessorId":cpu.get("ProcessorId")} for cpu in self.cpu],
             "storage":[{"Model":disk.get("Model"),"SerialNumber":disk.get("SerialNumber"),"MediaType":disk.get("MediaType"),"Size":disk.get("Size")}for disk in self.storage],
             "motherboard":[{"SerialNumber":motherboard.get("SerialNumber")} for motherboard in self.motherboard],
-            "gpu":[{"Name":gpu.get("Name")} for gpu in self.gpu]
+            "gpu":[{"Name":gpu.get("Name")} for gpu in self.gpu],
+            "ram":[{"Capacity":ram.get("Capacity")} for cnt,ram in enumerate(self.ram)]
         }
